@@ -12,6 +12,7 @@ jobs:
     env:
       TERM: xterm-256color
       FORCE_COLOR: 1
+      DOTNET_SYSTEM_CONSOLE_ALLOW_ANSI_COLOR_REDIRECTION: true
 
     steps:
       - uses: actions/checkout@v4
