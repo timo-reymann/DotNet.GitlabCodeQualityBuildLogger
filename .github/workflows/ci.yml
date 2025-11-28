@@ -13,9 +13,16 @@ jobs:
       TERM: xterm-256color
       FORCE_COLOR: 1
       DOTNET_SYSTEM_CONSOLE_ALLOW_ANSI_COLOR_REDIRECTION: true
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      id-token: write
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
@@ -39,71 +46,26 @@ jobs:
       - name: Test
         run: dotnet test --no-build --configuration Release --verbosity normal
 
-  release:
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    env:
-      TERM: xterm-256color
-      FORCE_COLOR: 1
-      DOTNET_SYSTEM_CONSOLE_ALLOW_ANSI_COLOR_REDIRECTION: true
-    permissions:
-      contents: write
-      issues: write
-      pull-requests: write
-      id-token: write
-
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          persist-credentials: false
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '9.0.x'
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 'lts/*'
-
-      - name: Cache NuGet packages
-        uses: actions/cache@v4
-        with:
-          path: ~/.nuget/packages
-          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
-          restore-keys: |
-            ${{ runner.os }}-nuget-
-
-      - name: Restore dependencies
-        run: dotnet restore
-
-      - name: Build
-        run: dotnet build --no-restore --configuration Release
-
-      - name: Install semantic-release
-        run: npm install -g semantic-release@24.2.1 @semantic-release/changelog@6.0.3 @semantic-release/git@10.0.1 @semantic-release/github@11.0.1
-
-      - name: Run semantic-release
+      - name: Semantic Release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         id: semantic
+        uses: cycjimmy/semantic-release-action@v4
+        with:
+          semantic_version: 24.0.0
+          extra_plugins: |
+            @semantic-release/git@10.0.1
+            @semantic-release/changelog@6.0.3
+            @semantic-release/github@11.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release
-
-      - name: Extract version from tag
-        if: steps.semantic.outputs.new_release_published == 'true'
-        id: version
-        run: echo "VERSION=${{ steps.semantic.outputs.new_release_version }}" >> $GITHUB_OUTPUT
 
       - name: Pack Library
         if: steps.semantic.outputs.new_release_published == 'true'
-        run: dotnet pack src/DotNet.GitlabCodeQualityBuildLogger/DotNet.GitlabCodeQualityBuildLogger.csproj --no-build --configuration Release -p:Version=${{ steps.version.outputs.VERSION }} --output ./nupkg
+        run: dotnet pack src/DotNet.GitlabCodeQualityBuildLogger/DotNet.GitlabCodeQualityBuildLogger.csproj --no-build --configuration Release -p:Version=${{ steps.semantic.outputs.new_release_version }} --output ./nupkg
 
       - name: Pack Tool
         if: steps.semantic.outputs.new_release_published == 'true'
-        run: dotnet pack src/DotNet.GitlabCodeQualityBuildLogger.Tool/DotNet.GitlabCodeQualityBuildLogger.Tool.csproj --no-build --configuration Release -p:Version=${{ steps.version.outputs.VERSION }} --output ./nupkg
+        run: dotnet pack src/DotNet.GitlabCodeQualityBuildLogger.Tool/DotNet.GitlabCodeQualityBuildLogger.Tool.csproj --no-build --configuration Release -p:Version=${{ steps.semantic.outputs.new_release_version }} --output ./nupkg
 
       - name: Login to NuGet
         if: steps.semantic.outputs.new_release_published == 'true'
