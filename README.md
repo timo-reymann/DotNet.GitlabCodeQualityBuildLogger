@@ -34,16 +34,24 @@ DotNet.GitlabCodeQualityBuildLogger
 
 ```sh
 dotnet new tool-manifest # if you don't have a tool manifest yet
-dotnet tool install DotNet.GitlabCodeQualityBuildLogger.Tool
+dotnet tool install GitlabCodeQualityBuildLogger.Tool
 ```
 
 ### Global
 
 ```sh
-dotnet tool install -g DotNet.GitlabCodeQualityBuildLogger.Tool
+dotnet tool install -g GitlabCodeQualityBuildLogger.Tool
 ```
 
 ## Usage
+
+### Global
+
+```sh
+dotnet build -logger:"$(dotnet tool run gitlab-code-quality-logger);gl-code-quality-report.json"
+```
+
+### Global
 
 ```sh
 dotnet build -logger:"$(gitlab-code-quality-logger);gl-code-quality-report.json"
