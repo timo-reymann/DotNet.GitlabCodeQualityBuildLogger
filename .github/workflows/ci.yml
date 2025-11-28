@@ -9,6 +9,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      TERM: xterm-256color
+      FORCE_COLOR: 1
 
     steps:
       - uses: actions/checkout@v4
@@ -39,6 +42,9 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    env:
+      TERM: xterm-256color
+      FORCE_COLOR: 1
     permissions:
       contents: write
       issues: write
@@ -54,7 +60,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
-          cache: 'npm'
 
       - name: Install semantic-release
         run: npm install -g semantic-release@24.2.1 @semantic-release/changelog@6.0.3 @semantic-release/git@10.0.1 @semantic-release/github@11.0.1
