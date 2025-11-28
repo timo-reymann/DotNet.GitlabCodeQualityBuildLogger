@@ -1,0 +1,6 @@
+<Project>
+    <PropertyGroup>
+        <!-- Path to the logger assembly in the NuGet package -->
+        <BuildLoggerCorePath>$(MSBuildThisFileDirectory)BuildLogger.Core.dll</BuildLoggerCorePath>
+    </PropertyGroup>
+</Project>

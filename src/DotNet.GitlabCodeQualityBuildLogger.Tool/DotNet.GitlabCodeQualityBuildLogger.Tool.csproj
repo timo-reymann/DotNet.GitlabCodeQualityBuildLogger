@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <!-- Tool configuration -->
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>gitlab-code-quality-logger</ToolCommandName>
+
+    <!-- NuGet Package Properties -->
+    <PackageId>DotNet.GitlabCodeQualityBuildLogger.Tool</PackageId>
+    <Authors>Timo Reymann</Authors>
+    <Description>CLI tool that outputs the GitLab Code Quality logger path for use with dotnet build -logger</Description>
+    <PackageTags>msbuild;logger;build;tool;gitlab;code-quality</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Reference the logger project so the DLL is copied to output -->
+    <ProjectReference Include="..\DotNet.GitlabCodeQualityBuildLogger\DotNet.GitlabCodeQualityBuildLogger.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Include the logger DLL in the tool package -->
+    <None Include="$(OutputPath)\DotNet.GitlabCodeQualityBuildLogger.dll" Pack="true" PackagePath="tools\net9.0\any" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <!-- NuGet Package Properties -->
+    <PackageId>DotNet.GitlabCodeQualityBuildLogger</PackageId>
+    <Authors>Timo Reymann</Authors>
+    <Description>MSBuild logger that outputs GitLab Code Quality report format</Description>
+    <PackageTags>msbuild;logger;build;gitlab;code-quality</PackageTags>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Build.Framework" />
+    <PackageReference Include="Microsoft.Build.Utilities.Core" />
+    <PackageReference Include="System.Text.Json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="build" Visible="false" />
+    <None Include="DotNet.GitlabCodeQualityBuildLogger.props" Pack="true" PackagePath="build" Visible="false" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/DotNet.GitlabCodeQualityBuildLogger/DotNet.GitlabCodeQualityBuildLogger.csproj" />
+    <Project Path="src/DotNet.GitlabCodeQualityBuildLogger.Tool/DotNet.GitlabCodeQualityBuildLogger.Tool.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/DotNet.GitlabCodeQualityBuildLogger.Tests/DotNet.GitlabCodeQualityBuildLogger.Tests.csproj" />
+  </Folder>
+</Solution>

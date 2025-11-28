@@ -1,0 +1,12 @@
+# Rider & IntelIJ
+.idea/
+
+# Dotnet
+**/[Bb]in
+**/[Oo]bj
+
+# Testing
+gl-code-quality*.json
+
+# AI Tooling
+.claude/
