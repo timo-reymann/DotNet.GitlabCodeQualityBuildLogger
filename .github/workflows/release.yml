@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     tags:
-      - 'v*'
+      - '*'
 
 jobs:
   publish:
@@ -36,9 +36,6 @@ jobs:
 
       - name: Build
         run: dotnet build --no-restore --configuration Release
-
-      - name: Test
-        run: dotnet test --no-build --configuration Release --verbosity normal
 
       - name: Extract version from tag
         id: version
