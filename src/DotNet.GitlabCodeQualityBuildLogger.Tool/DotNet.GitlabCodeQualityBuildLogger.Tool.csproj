@@ -11,7 +11,7 @@
     <ToolCommandName>gitlab-code-quality-logger</ToolCommandName>
 
     <!-- NuGet Package Properties -->
-    <PackageId>DotNet.GitlabCodeQualityBuildLogger.Tool</PackageId>
+    <PackageId>GitlabCodeQualityBuildLogger.Tool</PackageId>
     <Authors>Timo Reymann</Authors>
     <Description>CLI tool that outputs the GitLab Code Quality logger path for use with dotnet build -logger</Description>
     <PackageTags>msbuild;logger;build;tool;gitlab;code-quality</PackageTags>

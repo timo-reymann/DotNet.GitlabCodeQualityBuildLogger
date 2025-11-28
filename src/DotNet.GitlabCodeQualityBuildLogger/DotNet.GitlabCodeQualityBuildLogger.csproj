@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
 
     <!-- NuGet Package Properties -->
-    <PackageId>DotNet.GitlabCodeQualityBuildLogger</PackageId>
+    <PackageId>GitlabCodeQualityBuildLogger</PackageId>
     <Authors>Timo Reymann</Authors>
     <Description>MSBuild logger that outputs GitLab Code Quality report format</Description>
     <PackageTags>msbuild;logger;build;gitlab;code-quality</PackageTags>
