@@ -50,7 +50,7 @@ dotnet tool install -g GitlabCodeQualityBuildLogger.Tool
 
 ## Usage
 
-### Global
+### Project-level (recommended)
 
 ```sh
 dotnet build -logger:"$(dotnet tool run gitlab-code-quality-logger);gl-code-quality-report.json"
