@@ -69,7 +69,7 @@ build:
   stage: build
   script:
     - dotnet tool restore
-    - dotnet build -logger:"$(gitlab-code-quality-logger);gl-code-quality-report.json"
+    - dotnet build -logger:"$(gitlab-code-quality-logger -o gl-code-quality-report.json)"
   artifacts:
     reports:
       codequality: gl-code-quality-report.json
@@ -139,5 +139,3 @@ src/
 tests/
 └── DotNet.GitlabCodeQualityBuildLogger.Tests/ # xUnit tests
 ```
-
----

@@ -26,5 +26,9 @@
     <!-- Include the logger DLL in the tool package -->
     <None Include="$(OutputPath)\DotNet.GitlabCodeQualityBuildLogger.dll" Pack="true" PackagePath="tools\net9.0\any" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="System.CommandLine" />
+  </ItemGroup>
 
 </Project>

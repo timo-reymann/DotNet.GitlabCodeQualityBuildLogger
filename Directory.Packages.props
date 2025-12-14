@@ -10,6 +10,7 @@
     <PackageVersion Include="Microsoft.Build.Locator" Version="1.7.8" />
     <PackageVersion Include="System.Text.Json" Version="9.0.0" />
     <PackageVersion Include="BuildLogger.Core" Version="11.10.54" />
+    <PackageVersion Include="System.CommandLine" Version="2.0.1" />
 
     <!-- SourceLink -->
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
