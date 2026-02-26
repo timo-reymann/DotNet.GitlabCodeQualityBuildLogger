@@ -22,9 +22,9 @@
     <ProjectReference Include="..\DotNet.GitlabCodeQualityBuildLogger\DotNet.GitlabCodeQualityBuildLogger.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' != ''">
     <!-- Include the logger DLL in the tool package -->
-    <None Include="$(OutputPath)\DotNet.GitlabCodeQualityBuildLogger.dll" Pack="true" PackagePath="tools\$(TargetFramework)\any" />
+    <None Include="$(OutputPath)DotNet.GitlabCodeQualityBuildLogger.dll" Pack="true" PackagePath="tools/$(TargetFramework)/any" />
   </ItemGroup>
   
   <ItemGroup>
