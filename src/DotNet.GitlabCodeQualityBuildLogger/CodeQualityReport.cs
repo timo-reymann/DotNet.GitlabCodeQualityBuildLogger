@@ -30,7 +30,8 @@ public sealed class CodeQualityIssue
         string severity)
     {
         var description = $"{checkName}: {message}";
-        var fingerprint = GenerateFingerprint(filePath, line, checkName, message);
+        var filePathNormalized = NormalizePath(filePath);
+        var fingerprint = GenerateFingerprint(filePathNormalized, line, checkName, message);
 
         return new CodeQualityIssue
         {
@@ -40,7 +41,7 @@ public sealed class CodeQualityIssue
             Severity = severity,
             Location = new CodeQualityLocation
             {
-                Path = NormalizePath(filePath),
+                Path = NormalizePath(filePathNormalized),
                 Lines = new CodeQualityLines { Begin = line > 0 ? line : 1 }
             }
         };
