@@ -2,5 +2,31 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "github>timo-reymann/renovate-config"
+  ],
+  "enabledManagers": [
+    "ansible-galaxy",
+    "cargo",
+    "circleci",
+    "docker-compose",
+    "dockerfile",
+    "gomod",
+    "homebrew",
+    "nodenv",
+    "npm",
+    "nvm",
+    "nuget",
+    "pre-commit",
+    "regex",
+    "terraform-version",
+    "terraform",
+    "pip_requirements",
+    "gradle",
+    "gradle-wrapper",
+    "maven",
+    "maven-wrapper",
+    "git-submodules",
+    "poetry",
+    "pep621",
+    "github-actions"
   ]
 }
