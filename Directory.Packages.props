@@ -7,7 +7,7 @@
     <!-- Add package versions here -->
     <PackageVersion Include="Microsoft.Build.Framework" Version="18.0.2" />
     <PackageVersion Include="Microsoft.Build.Utilities.Core" Version="18.0.2" />
-    <PackageVersion Include="Microsoft.Build.Locator" Version="1.7.8" />
+    <PackageVersion Include="Microsoft.Build.Locator" Version="1.11.2" />
     <PackageVersion Include="System.Text.Json" Version="9.0.0" />
     <PackageVersion Include="BuildLogger.Core" Version="11.10.54" />
     <PackageVersion Include="System.CommandLine" Version="2.0.1" />
