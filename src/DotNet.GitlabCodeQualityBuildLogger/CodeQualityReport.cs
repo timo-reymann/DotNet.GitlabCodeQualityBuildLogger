@@ -41,7 +41,7 @@ public sealed class CodeQualityIssue
             Severity = severity,
             Location = new CodeQualityLocation
             {
-                Path = NormalizePath(filePathNormalized),
+                Path = filePathNormalized,
                 Lines = new CodeQualityLines { Begin = line > 0 ? line : 1 }
             }
         };
