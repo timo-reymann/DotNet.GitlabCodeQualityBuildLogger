@@ -5,12 +5,12 @@
 
   <ItemGroup>
     <!-- Add package versions here -->
-    <PackageVersion Include="Microsoft.Build.Framework" Version="18.8.2" />
-    <PackageVersion Include="Microsoft.Build.Utilities.Core" Version="18.8.2" />
+    <PackageVersion Include="Microsoft.Build.Framework" Version="18.9.6" />
+    <PackageVersion Include="Microsoft.Build.Utilities.Core" Version="18.9.6" />
     <PackageVersion Include="Microsoft.Build.Locator" Version="1.7.8" />
-    <PackageVersion Include="System.Text.Json" Version="9.0.18" />
+    <PackageVersion Include="System.Text.Json" Version="9.0.19" />
     <PackageVersion Include="BuildLogger.Core" Version="11.10.54" />
-    <PackageVersion Include="System.CommandLine" Version="2.0.10" />
+    <PackageVersion Include="System.CommandLine" Version="2.0.11" />
 
     <!-- SourceLink -->
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
