@@ -52,7 +52,7 @@ jobs:
       - name: Semantic Release
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         id: semantic
-        uses: cycjimmy/semantic-release-action@v7.1.2
+        uses: cycjimmy/semantic-release-action@v8.1.0
         with:
           semantic_version: 25.0.9
           extra_plugins: |
